@@ -1,0 +1,66 @@
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.34.4.
+--
+-- see: https://github.com/sol/hpack
+
+name:           brainfuck
+version:        0.1.0.0
+description:    Please see the README on GitHub at <https://github.com/githubuser/brainfuck#readme>
+homepage:       https://github.com/JPYamamoto/brainfuck#readme
+bug-reports:    https://github.com/JPYamamoto/brainfuck/issues
+author:         Juan Pablo Yamamoto
+maintainer:     jpyamamoto@ciencias.unam.mx
+copyright:      2021 Juan Pablo Yamamoto
+license:        MIT
+license-file:   LICENSE
+build-type:     Simple
+extra-source-files:
+    README.md
+    ChangeLog.md
+
+source-repository head
+  type: git
+  location: https://github.com/JPYamamoto/brainfuck
+
+library
+  exposed-modules:
+      Interpreter
+      Lib
+      Parser
+      Tape
+  other-modules:
+      Paths_brainfuck
+  hs-source-dirs:
+      src
+  build-depends:
+      Stream >=0.4
+    , base >=4.7 && <5
+  default-language: Haskell2010
+
+executable brainfuck-exe
+  main-is: Main.hs
+  other-modules:
+      Paths_brainfuck
+  hs-source-dirs:
+      app
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      Stream >=0.4
+    , base >=4.7 && <5
+    , brainfuck
+  default-language: Haskell2010
+
+test-suite brainfuck-test
+  type: exitcode-stdio-1.0
+  main-is: Spec.hs
+  other-modules:
+      Paths_brainfuck
+  hs-source-dirs:
+      test
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      Stream >=0.4
+    , base >=4.7 && <5
+    , brainfuck
+  default-language: Haskell2010
